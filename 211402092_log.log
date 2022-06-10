@@ -1,0 +1,105 @@
+MariaDB [(none)]> create view 211402092
+    -> INSERT INTO task_id
+    -> values
+    -> 924eaa0e-c8f1-4132-a032-1d98c176a8c3
+    -> f1ee037b-9135-41d2-9757-091391df4fb8
+    -> c96fdbd6-a3a4-42e3-b437-444ffd734a36
+    -> 
+    -> INSERT INTO nama_task
+    -> VALUES
+    -> Membuat Modul add_to_cart pada Aplikasi
+    -> Mendokumentasikan Code 
+    -> Menganalisa Data Kemahasiswaan
+    -> 
+    -> INSERT INTO status
+    -> VaLUES
+    -> Pending
+    -> Process
+    -> Process
+    -> 
+    -> INSERT INTO kategori_indikator
+    -> VALUES
+    -> 5e72be09-384e-4097-8e78-c20e84d88112
+    -> 5e72be09-384e-4097-8e78-c20e84d88112
+    -> 669c981f-1bd6-47d5-b2ce-de568aaa160a
+    -> 
+    -> INSERT INTO kategori
+    -> VALUES
+    -> administrasi
+    -> Analisis
+    -> teknikal
+    -> 
+    -> INSERT INTO indikator
+    -> VALUES
+    -> indikator 2
+    -> indikator 2
+    -> indikator 1
+    -> 
+    -> INSERT INTO creator_id
+    -> VALUES
+    -> 72233152-7af0-4e89-94fc-d8d02e73aba8
+    -> 72233152-7af0-4e89-94fc-d8d02e73aba8
+    -> 72233152-7af0-4e89-94fc-d8d02e73aba8
+    -> 
+    -> INSERT INTO creator_name
+    -> VALUES
+    -> USER A
+    -> USER A
+    -> USER A
+    -> 
+    -> INSERT INTO prioritas
+    -> VALUES
+    -> penting
+    -> tambahan
+    -> biasa
+    -> MariaDB [(none)]> CREATE VIEW nim_211402092 ASSELECT a.id as 'Task Id', a.task_name as 'Nama Task', a.task_status as 'Status', a.category_id as 'Kategori Indikator', b.category_name as 'Kategori', c.indicator_name as 'Indikator', a.user_create as 'Creator Id', d.name as 'Creator Name', a.task_priority as 'Prioritas'FROM task_plans aRIGHT JOIN task_categories bON a.category_id = b.idRIGHT JOIN task_indicators cON a.category_id = c.idRIGHT JOIN users dON a.user_create = d.id;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> tee 211402092_LOG.log
+MariaDB [(none)]> CREATE VIEW nim_211402092 AS
+    -> SELECT a.id as 'Task Id', a.task_name as 'Nama Task', a.task_status as 'Status', a.category_id as 'Kategori Indikator', b.category_name as 'Kategori', c.indicator_name as 'Indikator', a.user_create as 'Creator Id', d.name as 'Creator Name', a.task_priority as 'Prioritas'
+    -> FROM task_plans a
+    -> RIGHT JOIN task_categories b
+    -> ON a.category_id = b.id
+    -> RIGHT JOIN task_indicators c
+    -> ON a.category_id = c.id
+    -> RIGHT JOIN users d
+    -> ON a.user_create = d.id;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use_task_manager
+    -> CREATE VIEW nim_211402092 AS
+    -> SELECT a.id as 'Task Id', a.task_name as 'Nama Task', a.task_status as 'Status', a.category_id as 'Kategori Indikator', b.category_name as 'Kategori', c.indicator_name as 'Indikator', a.user_create as 'Creator Id', d.name as 'Creator Name', a.task_priority as 'Prioritas'
+    -> FROM task_plans a
+    -> RIGHT JOIN task_categories b
+    -> ON a.category_id = b.id
+    -> RIGHT JOIN task_indicators c
+    -> ON a.category_id = c.id
+    -> RIGHT JOIN users d
+    -> ON a.user_create = d.id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'use_task_manager
+CREATE VIEW nim_211402092 AS
+SELECT a.id as 'Task Id', a.tas...' at line 1
+MariaDB [(none)]> use task_manager
+Database changed
+MariaDB [task_manager]> CREATE VIEW nim_211402092 AS
+    -> SELECT a.id as 'Task Id', a.task_name as 'Nama Task', a.task_status as 'Status', a.category_id as 'Kategori Indikator', b.category_name as 'Kategori', c.indicator_name as 'Indikator', a.user_create as 'Creator Id', d.name as 'Creator Name', a.task_priority as 'Prioritas'
+    -> FROM task_plans a
+    -> RIGHT JOIN task_categories b
+    -> ON a.category_id = b.id
+    -> RIGHT JOIN task_indicators c
+    -> ON a.category_id = c.id
+    -> RIGHT JOIN users d
+    -> ON a.user_create = d.id;
+Query OK, 0 rows affected (0.011 sec)
+
+MariaDB [task_manager]> select from nim_211402092
+    -> 
+    -> MariaDB [task_manager]> SELECT * FROM `nim_211402092`
+    -> ;
++---------+-----------+--------+--------------------+----------+-----------+------------+--------------+-----------+
+| Task Id | Nama Task | Status | Kategori Indikator | Kategori | Indikator | Creator Id | Creator Name | Prioritas |
++---------+-----------+--------+--------------------+----------+-----------+------------+--------------+-----------+
+| NULL    | NULL      | NULL   | NULL               | NULL     | NULL      | NULL       | User B       |      NULL |
+| NULL    | NULL      | NULL   | NULL               | NULL     | NULL      | NULL       | User A       |      NULL |
++---------+-----------+--------+--------------------+----------+-----------+------------+--------------+-----------+
+2 rows in set (0.005 sec)
+
